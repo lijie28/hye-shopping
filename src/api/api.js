@@ -12,11 +12,15 @@ export async function post(data, valid) {
 		data: data
 	};
 	if (valid) {
-		payload.data.checkout_time = new Date().toLocaleString();
+		// payload.data.checkout_time = new Date().toLocaleString();
+		payload.data.checkout_time = new `${Date.now()}`;
 	} else {
-		payload.data.invalid_checkout_time = new Date().toLocaleString();
+		// payload.data.invalid_checkout_time = new Date().toLocaleString();
+		payload.data.invalid_checkout_time = `${Date.now()}`;
 	}
-	payload.data.checkout_time = new Date().toLocaleString();
+
+	// payload.data.checkout_time = new Date().toLocaleString();
+	payload.data.checkout_time = `${Date.now()}`;
 	await axios.post(endpoint, payload, config).then(res => {
 		console.log('response saved: ', res);
 	}).catch(err => {

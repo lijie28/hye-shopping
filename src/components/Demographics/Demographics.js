@@ -82,13 +82,13 @@ export class Demographics extends React.Component {
         data['inner'] = `${window.innerHeight}, ${window.innerWidth}`;
 
         console.log(`Submitting the data: ${JSON.stringify(data, null, 2)}`);
-        this.downloadJson(JSON.stringify(data, null, 2), `${data.version + data.session_id + '_' + Date.now()}.json`);
+        // this.downloadJson(JSON.stringify(data, null, 2), `${data.version + data.session_id + '_' + Date.now()}.json`);
+        post(data, true).then(res => { }).catch(err => {
+            console.log('failed to save the data', err)
+        });
         this.setState({
             modalVisible: true,
-        })
-        // post(data, true).then(res => { }).catch(err => {
-        //     console.log('failed to save the data', err)
-        // });
+        });
     }
 
     amazonClick
